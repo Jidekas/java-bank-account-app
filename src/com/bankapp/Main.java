@@ -4,6 +4,8 @@ package com.bankapp;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
+        var bank = new Bank();
         var savingsAcct1 = new SavingsAccount(
                 "001",
                 "John Doe",
@@ -19,15 +21,13 @@ public class Main {
                 3000
         );
 
-        savingsAcct1.displayAccountDetails();
-        savingsAcct1.deposit(1000);
-        savingsAcct1.withdraw(3000);
-        savingsAcct1.applyInterest();
-        savingsAcct1.displayAccountDetails();
+        bank.addAccount(savingsAcct1);
+        bank.addAccount(currentAcct1);
 
-        currentAcct1.displayAccountDetails();
-        currentAcct1.deposit(2000);
-        currentAcct1.withdraw(16000);
-        currentAcct1.displayAccountDetails();
+        bank.deposit("001",3000);
+        bank.deposit("002",50_000);
+        bank.transfer("002","001",15_000);
+        bank.displayAllAccounts();
+
     }
 }
