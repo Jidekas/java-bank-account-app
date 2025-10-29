@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Console console = new Console();
+        var helper = new ConsoleHelper();
         boolean exit = false;
 
         System.out.println("Welcome to Kas Banking System");
@@ -14,7 +15,7 @@ public class Main {
         while (!exit){
             console.showMenu();
             System.out.println("Choose an option");
-            int choice = console.getIntInput();
+            int choice = helper.readInt();
 
             switch (choice){
                 case 1 -> console.createAccount();
