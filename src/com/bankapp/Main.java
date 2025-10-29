@@ -1,33 +1,35 @@
 package com.bankapp;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
+
+
     public static void main(String[] args) {
+        Console console = new Console();
+        boolean exit = false;
 
-        var bank = new Bank();
-        var savingsAcct1 = new SavingsAccount(
-                "001",
-                "John Doe",
-                5000,
-                5,
-                1000
-        );
+        System.out.println("Welcome to Kas Banking System");
 
-        var currentAcct1 = new CheckingAccount(
-                "002",
-                "Tonia Lawrence",
-                10_000,
-                3000
-        );
+        while (!exit){
+            console.showMenu();
+            System.out.println("Choose an option");
+            int choice = console.getIntInput();
 
-        bank.addAccount(savingsAcct1);
-        bank.addAccount(currentAcct1);
-
-        bank.deposit("001",3000);
-        bank.deposit("002",50_000);
-        bank.transfer("002","001",15_000);
-        bank.displayAllAccounts();
-
+            switch (choice){
+                case 1 -> console.createAccount();
+                case 2 -> console.deposit();
+                case 3 -> console.withdraw();
+                case 4 -> console.transfer();
+                case 5 -> console.viewAccount();
+                case 6 -> console.displayAllAccounts();
+                case 7 -> {
+                    System.out.println("👋 Exiting... Thank you for using Simple Bank!");
+                    exit = true;
+                }
+                default -> System.out.println("Invalid option. Please try again");
+            }
+        }
     }
+
 }
